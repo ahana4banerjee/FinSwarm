@@ -89,6 +89,10 @@ def chat_endpoint(req: func.HttpRequest) -> func.HttpResponse:
         "answer": safe_text,
         "source": primary["source"],
         "related_concepts": primary["related"],
+
+        # ✅ THIS IS WHAT FRONTEND NEEDS
+        "proactive_insight": proactive,
+
         "memory": {
             "last_concept": memory["last_concept"],
             "times_asked": ask_count
@@ -98,7 +102,6 @@ def chat_endpoint(req: func.HttpRequest) -> func.HttpResponse:
             "tutor": tutor_response.get("meta"),
             "proactive": proactive.get("meta") if proactive else None
         }
-
     }
 
 

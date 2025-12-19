@@ -15,7 +15,16 @@ def run(goal, duration):
     })
 
     # Conditional middle phase
-    if "risk" in goal or "invest" in goal or "stocks" in goal:
+    PRODUCT_KEYWORDS = [
+        "mutual fund", "mutual funds",
+        "fd", "fixed deposit",
+        "insurance", "stocks", "invest", "inflation"
+    ]
+
+    needs_risk = any(k in goal for k in PRODUCT_KEYWORDS)
+
+    if needs_risk:
+
         roadmap.append({
             "phase": 2,
             "title": "Risk & Inflation",
